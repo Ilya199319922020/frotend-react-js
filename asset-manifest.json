@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.2c2aef0a.css",
-    "main.js": "/static/js/main.c19e8679.js",
-    "index.html": "/index.html",
-    "main.2c2aef0a.css.map": "/static/css/main.2c2aef0a.css.map",
-    "main.c19e8679.js.map": "/static/js/main.c19e8679.js.map"
+    "main.css": "/frotend-react-js/static/css/main.2c2aef0a.css",
+    "main.js": "/frotend-react-js/static/js/main.9982d9ec.js",
+    "index.html": "/frotend-react-js/index.html",
+    "main.2c2aef0a.css.map": "/frotend-react-js/static/css/main.2c2aef0a.css.map",
+    "main.9982d9ec.js.map": "/frotend-react-js/static/js/main.9982d9ec.js.map"
   },
   "entrypoints": [
     "static/css/main.2c2aef0a.css",
-    "static/js/main.c19e8679.js"
+    "static/js/main.9982d9ec.js"
   ]
 }
