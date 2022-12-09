@@ -1,8 +1,8 @@
 {
-  "name": "client",
+  "name": "frotend-react-js",
   "version": "0.1.0",
   "private": true,
-  "hopage": "https://ilya199319922020.github.io/frotend-react-js",
+  "homepage": "https://ilya199319922020.github.io/frotend-react-js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

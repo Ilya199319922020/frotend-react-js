@@ -67,12 +67,6 @@ const userReducer = (state = initialState, action) => {
 				...state,
 				diagramData:  data
 			}
-		case 'SET_USER':
-			return {
-				...state,
-				user: action.user,
-
-			}
 		default:
 			return state;
 	}
