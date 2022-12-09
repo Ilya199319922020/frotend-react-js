@@ -9,7 +9,7 @@ function App() {
   return (
     <Routes >
       <Route path='/frotend-react-js' element={<Navigate replace to="/registration" />} />
-      <Route path='/frotend-react-js' element={<Header />}>
+      <Route path='/' element={<Header />}>
         <Route path='/registration' element={<Registration />} />
         <Route path='/testing' element={<Test />} />
         <Route path='/report' element={<TableComponent />} />
