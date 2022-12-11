@@ -9,8 +9,8 @@ const initialState = {
 	isDiagram: false,
 	diagramData: [],
 	countUser: null,
+	isLoading: false,
 }
-
 
 const userReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -24,11 +24,12 @@ const userReducer = (state = initialState, action) => {
 				isTable: false,
 				isDiagram: false,
 				countUser: null,
+				isLoading: false,
 			}
 		case 'SET_USER':
 			return {
 				...state,
-				user:  [action.user],
+				user: [action.user],
 			}
 		case 'SET_ANSWERS':
 			return {
@@ -65,13 +66,17 @@ const userReducer = (state = initialState, action) => {
 			});
 			return {
 				...state,
-				diagramData:  data
+				diagramData: data
+			}
+		case 'SET_IS_LOADING':
+			return {
+				...state,
+				isLoading: action.isLoading
 			}
 		default:
 			return state;
 	}
 };
-
 
 export const actions = {
 	setUserData: (user) => ({ type: 'SET_USER', user }),
@@ -81,14 +86,16 @@ export const actions = {
 	setIsDiagram: (isDiagram) => ({ type: 'SET_IS_DIAGRAM', isDiagram }),
 	setCount: (count) => ({ type: 'SET_COUNT', count }),
 	setDiagramValue: (results) => ({ type: 'SET_DIAGRAM_DATE', results }),
+	setIsLoading: (isLoading) => ({ type: 'SET_IS_LOADING', isLoading }),
 	setReset: () => ({ type: 'RESET' }),
 }
 
-
 export const saveUser = (data) => {
 	return async (dispatch) => {
+		dispatch(actions.setIsLoading(true));
 		const response = await axios.post(`${url}/api/createUser`, data)
 		if (response.status === 201) {
+			dispatch(actions.setIsLoading(false));
 			dispatch(actions.setUserData(response.data));
 		}
 	}
@@ -96,8 +103,10 @@ export const saveUser = (data) => {
 
 export const saveTest = (id, answers) => {
 	return async (dispatch) => {
+		dispatch(actions.setIsLoading(true));
 		const response = await axios.post(`${url}/api/set`, { id, answers })
 		if (response.status === 201) {
+			dispatch(actions.setIsLoading(false));
 			dispatch(actions.setUserTestResult(response.data.answers));
 			dispatch(actions.setIsTable(true));
 		}
@@ -106,8 +115,10 @@ export const saveTest = (id, answers) => {
 
 export const fetchAllResults = () => {
 	return async (dispatch) => {
+		dispatch(actions.setIsLoading(true));
 		const response = await axios.get(`${url}/api/user`)
 		if (response.status === 200) {
+			dispatch(actions.setIsLoading(false));
 			const { resResults, count } = response.data;
 			dispatch(actions.setTestAllData(resResults));
 			dispatch(actions.setDiagramValue(resResults));

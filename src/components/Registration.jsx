@@ -6,6 +6,7 @@ import { saveUser } from '../storeRedux/reducer/userReducer';
 import styles from '../styles/Registration.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import Loader from '../assets/HOC/Loader';
 
 const Registration = () => {
 	const [valueSurName, setValueSurName] = useInput('');
@@ -46,54 +47,56 @@ const Registration = () => {
 	}
 
 	return (
-		<div
-			className={styles.registration}
-		>
-			<form
-				className={styles.registration__form}
+		<Loader>
+			<div
+				className={styles.registration}
 			>
-				<h3
-					className={styles.registration__title}
+				<form
+					className={styles.registration__form}
 				>
-					Регистрация пользователя
-				</h3>
-				<input
-					className={styles.registration__form_surname}
-					{...valueSurName}
-					type={'text'}
-					placeholder={'Фамилия'}
-					required={true}
-				/>
-				<input
-					className={styles.registration__form_name}
-					{...valueName}
-					type={'text'}
-					placeholder={'Имя'}
-					required={true}
-				/>
-				<input
-					className={styles.registration__form_patronymic}
-					{...valuePatronymic}
-					type={'text'}
-					placeholder={'Отчество'}
-					required={true}
-				/>
-				{
-					errorRegistration &&
-					<div
-						className={styles.registration__error}
+					<h3
+						className={styles.registration__title}
 					>
-						{errorRegistration}
-					</div>
-				}
-				<button
-					className={styles.registration__form_btn}
-					onClick={onSetData}
-				>
-					Зарегистрировать
-				</button>
-			</form>
-		</div>
+						Регистрация пользователя
+					</h3>
+					<input
+						className={styles.registration__form_surname}
+						{...valueSurName}
+						type={'text'}
+						placeholder={'Фамилия'}
+						required={true}
+					/>
+					<input
+						className={styles.registration__form_name}
+						{...valueName}
+						type={'text'}
+						placeholder={'Имя'}
+						required={true}
+					/>
+					<input
+						className={styles.registration__form_patronymic}
+						{...valuePatronymic}
+						type={'text'}
+						placeholder={'Отчество'}
+						required={true}
+					/>
+					{
+						errorRegistration &&
+						<div
+							className={styles.registration__error}
+						>
+							{errorRegistration}
+						</div>
+					}
+					<button
+						className={styles.registration__form_btn}
+						onClick={onSetData}
+					>
+						Зарегистрировать
+					</button>
+				</form>
+			</div>
+		</Loader>
 	);
 };
 
